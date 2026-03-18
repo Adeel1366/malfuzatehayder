@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "title": "Terjuman E Ishq",
+    "author": "Chaudhary Hazrat Ghulam Haider Chishti Nizami (R.A)",
+    "category": "books",
+    "cover": "assets/covers/tarjumaneishqcover.jpg",
+    "pdf": "assets/books/TerjumanEIshq_compressed.pdf"
+  },
+  {
+    "id": 2,
+    "title": "Faizan e Shaikh Abu Bakr Shibli",
+    "author": "Abu Bakr Shibli",
+    "category": "books",
+    "cover": "assets/covers/faizan.jpg",
+    "pdf": "assets/books/faizan-e-shaikh-abu-bakr-shibli.pdf"
+  }
+]
