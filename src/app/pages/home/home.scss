@@ -1,22 +1,3 @@
-body {
-  background: #f4f6f9;
-}
-
-/* Toolbar */
-
-.toolbar {
-  background: #0f766e;
-}
-
-.toolbar-container {
-  max-width: 1200px;
-  width: 100%;
-  margin: auto;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
 .logo {
   color: white;
@@ -79,26 +60,46 @@ mat-card-actions {
 
 .reader-overlay {
   position: fixed;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.85);
+  z-index: 1000;
 
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  z-index:1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .reader-container {
-  background:white;
-  padding:20px;
-  width:80%;
-  height:90%;
-  border-radius:10px;
+  width: 95%;
+  height: 95%;
+  background: #f5f5f5;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.reader-toolbar {
+  height: 60px;
+  background: #065f5b; // darker teal
+  color: white;
+
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+}
+
+.zoom-text {
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+.spacer {
+  flex: 1;
 }
 
 body {
@@ -111,7 +112,36 @@ body {
   padding: 0 20px;
 }
 
+.hero-header{
+  max-width:1200px;
+  margin:30px auto;
+  padding:0 20px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.search-field{
+  width:280px;
+}
+
 mat-paginator{
   max-width:1200px;
+  margin:30px auto;
+}
+
+.search-container{
+  max-width:1200px;
   margin:20px auto;
+  padding:0 20px;
+}
+
+.top-controls{
+  max-width:1200px;
+  margin:20px auto;
+  padding:0 20px;
+
+  display:flex;
+  justify-content:flex-end;
 }

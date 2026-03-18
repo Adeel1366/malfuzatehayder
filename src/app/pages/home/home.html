@@ -1,0 +1,106 @@
+<!-- HERO -->
+<div class="hero-header">
+
+  <div>
+    <h1>Explore Islamic Knowledge</h1>
+    <p>Read authentic Islamic books online</p>
+  </div>
+
+  <mat-form-field appearance="outline" class="search-field">
+    <input matInput placeholder="Search books..." [(ngModel)]="searchText">
+  </mat-form-field>
+
+</div>
+
+
+  <!-- CATEGORY FILTER -->
+  <div class="categories">
+
+    <button mat-stroked-button (click)="filterCategory('all')">
+      All
+    </button>
+
+    <button mat-stroked-button (click)="filterCategory('books')">
+      Books
+    </button>
+
+    <button mat-stroked-button (click)="filterCategory('speaches')">
+      Speeches
+    </button>
+  </div>
+
+
+  <!-- BOOK GRID -->
+  <div class="books-container">
+
+    <mat-card class="book-card"*ngFor="let book of paginatedBooks">
+
+      <img mat-card-image [src]="book.cover">
+
+      <mat-card-title>{{ book.title }}</mat-card-title>
+
+      <mat-card-subtitle>{{ book.author }}</mat-card-subtitle>
+
+      <mat-card-actions>
+
+        <button mat-raised-button color="primary"
+                (click)="openReader(book)">
+          Read
+        </button>
+
+        <a mat-button [routerLink]="['/book', book.id]">
+          Details
+        </a>
+
+        <a mat-button [href]="book.pdf" download>
+          Download
+        </a>
+
+      </mat-card-actions>
+
+    </mat-card>
+
+  </div>
+
+
+  <!-- PAGINATION -->
+  <mat-paginator
+  [length]="filteredBooks().length"
+  [pageSize]="pageSize"
+  (page)="onPageChange($event)">
+</mat-paginator>
+
+
+  <!-- PDF READER OVERLAY -->
+  <div class="reader-overlay" *ngIf="selectedBook">
+
+  <div class="reader-container">
+
+    <!-- Top Bar -->
+    <div class="reader-toolbar">
+
+      <button mat-raised-button color="warn" (click)="closeReader()">
+        ✖ Close
+      </button>
+
+      <div class="spacer"></div>
+
+      <button mat-icon-button (click)="zoomOut()">➖</button>
+      <span class="zoom-text">{{ zoom | number:'1.1-1' }}</span>
+      <button mat-icon-button (click)="zoomIn()">➕</button>
+
+    </div>
+
+    <!-- PDF Viewer -->
+    <pdf-viewer
+      [src]="selectedBook.pdf"
+      [zoom]="zoom"
+      [original-size]="false"
+      [render-text]="true"
+      [show-all]="true"
+      style="display:block; height:calc(100vh - 60px);">
+    </pdf-viewer>
+
+  </div>
+
+</div>
