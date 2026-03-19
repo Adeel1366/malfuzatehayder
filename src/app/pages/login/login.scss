@@ -1,0 +1,28 @@
+.login-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(330deg, #a3a3a3, #215551);
+}
+
+.login-card {
+  width: 350px;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+.google-btn {
+  margin-top: 10px;
+}

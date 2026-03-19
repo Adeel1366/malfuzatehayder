@@ -6,20 +6,22 @@
 }
 
 .search-box {
-  width: 260px;
-  max-height: 57px;
+  width: 250px;
 }
 /* Books layout */
 
 .books-container {
-  max-width: 1200px;
-  margin: 30px auto;
-
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
 
-  padding: 0 20px;
+/* MOBILE */
+@media (max-width: 768px) {
+  .books-container {
+    grid-template-columns: 1fr;
+  }
 }
 /* Book card */
 
@@ -46,16 +48,16 @@ mat-card-title {
 mat-card-actions {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 
 .categories {
-  max-width: 1200px;
-  margin: 30px auto 10px auto;
-
   display: flex;
-  gap: 12px;
-  padding: 0 20px;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 20px;
 }
 
 .reader-overlay {
@@ -107,9 +109,19 @@ body {
 }
 
 .hero {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 20px;
+  gap: 20px;
+}
+
+/* ONLY MOBILE */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .hero-header{
@@ -160,4 +172,60 @@ mat-paginator{
 
   background: rgba(255,255,255,0.8);
   z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 22px;
+  }
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.search-field {
+  width: 280px;
+}
+
+.search-field .mat-mdc-form-field-flex {
+  border-radius: 30px;
+  background: white;
+}
+
+.search-field input {
+  padding-left: 5px;
+}
+
+.search-field {
+  width: 220px;
+}
+
+.search-field .mat-mdc-form-field-flex {
+  border-radius: 30px;
+  background: white;
+}
+
+.search-field input {
+  padding-left: 5px;
+}
+
+@media (max-width: 768px) {
+  .search-field {
+    width: 100%;   // full width on mobile (this is correct)
+  }
 }

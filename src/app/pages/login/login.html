@@ -1,0 +1,31 @@
+<div class="login-wrapper">
+
+  <mat-card class="login-card">
+
+    <h2>Welcome Back</h2>
+    <p>Login to access Malfuzat E Hayder</p>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="email">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" [(ngModel)]="password">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" class="full-width"
+            (click)="login()">
+      Login
+    </button>
+
+    <p class="error" *ngIf="error">{{error}}</p>
+<button mat-stroked-button class="full-width google-btn"
+        (click)="googleLogin()">
+  🔵 Sign in with Google
+</button>
+  </mat-card>
+  
+
+</div>

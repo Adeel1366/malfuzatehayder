@@ -1,7 +1,22 @@
-<mat-toolbar class="toolbar">
-  <div class="toolbar-container">
-    <div class="logo">
-      📚 Islamic Books Library
+<mat-toolbar class="main-toolbar">
+
+  <!-- LEFT -->
+  <div class="left">
+    <span class="logo">📚</span>
+    <span class="title">Malfuzat E Hayder</span>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right" *ngIf="user">
+    <div class="profile" (click)="toggleMenu()">
+      <img [src]="user?.photoURL || 'assets/user.png'"  class="avatar">
+      <span class="name">{{ user.displayName }}</span>
+      <span class="arrow">▼</span>
+    </div>
+
+    <!-- DROPDOWN -->
+    <div class="dropdown" *ngIf="menuOpen">
+      <button (click)="logout()">Logout</button>
     </div>
   </div>
 </mat-toolbar>
