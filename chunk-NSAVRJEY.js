@@ -1,0 +1,1 @@
+import{Sb as a,Tb as i,nc as s,wb as o}from"./chunk-3DIXEOQO.js";var n=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=o({type:t,selectors:[["app-book-details"]],decls:2,vars:0,template:function(e,p){e&1&&(a(0,"p"),s(1,"book-details works!"),i())},encapsulation:2})};export{n as BookDetails};
