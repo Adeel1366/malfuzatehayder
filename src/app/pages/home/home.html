@@ -85,17 +85,28 @@
     <!-- Top Bar -->
     <div class="reader-toolbar">
 
-      <button mat-raised-button color="warn" (click)="closeReader()">
-        ✖ Close
-      </button>
+  <button mat-button class="close-btn" (click)="closeReader()">
+    <mat-icon>close</mat-icon>
+    Close
+  </button>
 
-      <div class="spacer"></div>
+  <div class="spacer"></div>
 
-      <button mat-icon-button (click)="zoomOut()">➖</button>
-      <span class="zoom-text">{{ zoom | number:'1.1-1' }}</span>
-      <button mat-icon-button (click)="zoomIn()">➕</button>
+  <div class="zoom-controls">
 
-    </div>
+    <button mat-icon-button (click)="zoomOut()">
+      <mat-icon>remove</mat-icon>
+    </button>
+
+    <span class="zoom-text">{{ zoom | number:'1.1-1' }}x</span>
+
+    <button mat-icon-button (click)="zoomIn()">
+      <mat-icon>add</mat-icon>
+    </button>
+
+  </div>
+
+</div>
 
     <!-- PDF Viewer -->
     <pdf-viewer

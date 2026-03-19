@@ -38,7 +38,7 @@ export class Home {
   pageIndex = 0;
   books: Book[] = [];
   selectedBook: Book | undefined = undefined;
-  zoom = 0.4;
+  zoom = 0.5;
   loadingPdf = false;
 
   searchText = '';
@@ -52,15 +52,13 @@ export class Home {
     });
   }
 
-  zoomIn() {
-  this.zoom += 0.2;
-  }
+zoomIn() {
+  this.zoom = Math.min(this.zoom + 0.2, 3); // max zoom
+}
 
-  zoomOut() {
-    if (this.zoom > 0.4) {
-      this.zoom -= 0.2;
-    }
-  }
+zoomOut() {
+  this.zoom = Math.max(this.zoom - 0.2, 0.5); // min zoom
+}
 
   filteredBooks() {
     return this.books.filter(book => {
