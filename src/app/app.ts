@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal, OnInit } from '@angular/core';
+import { Component, signal, OnInit, HostListener, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -31,7 +31,7 @@ import { AuthService } from './services/auth.service';
   styleUrl: './app.scss'
 })
 export class App implements OnInit {
-
+  @ViewChild('menuContainer') menuContainer!: ElementRef;
   protected readonly title = signal('malfuzatehayder');
   searchText = '';
   user: any;
@@ -41,7 +41,7 @@ export class App implements OnInit {
     return this.auth.isLoggedIn();
   }
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private auth: AuthService, private router: Router, private eRef: ElementRef) {}
   
   ngOnInit() {
   this.auth.onUserChange((user) => {
@@ -50,6 +50,7 @@ export class App implements OnInit {
 }
 
   logout() {
+    this.menuOpen = false;
     this.auth.logout().then(() => {
       this.router.navigate(['/login']);
     });
@@ -57,5 +58,14 @@ export class App implements OnInit {
 
   toggleMenu() {
   this.menuOpen = !this.menuOpen;
+}
+
+@HostListener('document:click', ['$event'])
+clickOutside(event: any) {
+  if (!this.menuContainer) return;
+
+  if (!this.menuContainer.nativeElement.contains(event.target)) {
+    this.menuOpen = false;
+  }
 }
 }

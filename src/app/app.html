@@ -7,15 +7,15 @@
   </div>
 
   <!-- RIGHT -->
-  <div class="right" *ngIf="user">
-    <div class="profile" (click)="toggleMenu()">
+  <div class="right" *ngIf="user" #menuContainer>
+    <div class="profile" (click)="toggleMenu(); $event.stopPropagation()">
       <img [src]="user?.photoURL || 'assets/user.png'"  class="avatar">
       <span class="name">{{ user.displayName }}</span>
       <span class="arrow">▼</span>
     </div>
 
     <!-- DROPDOWN -->
-    <div class="dropdown" *ngIf="menuOpen">
+    <div class="dropdown" *ngIf="menuOpen" (click)="$event.stopPropagation()">
       <button (click)="logout()">Logout</button>
     </div>
   </div>
