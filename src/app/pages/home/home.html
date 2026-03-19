@@ -75,7 +75,10 @@
   <div class="reader-overlay" *ngIf="selectedBook">
 
   <div class="reader-container">
-
+    <div *ngIf="loadingPdf" class="pdf-loader">
+      <mat-spinner></mat-spinner>
+      <p>Loading book...</p>
+    </div>
     <!-- Top Bar -->
     <div class="reader-toolbar">
 
@@ -98,6 +101,7 @@
       [original-size]="false"
       [render-text]="true"
       [show-all]="true"
+      (after-load-complete)="loadingPdf = false"
       style="display:block; height:calc(100vh - 60px);">
     </pdf-viewer>
 

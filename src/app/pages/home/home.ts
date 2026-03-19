@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-home',
@@ -24,7 +25,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     MatInputModule,
     MatFormFieldModule,
     MatPaginatorModule,
-    PdfViewerModule
+    PdfViewerModule,
+    MatProgressSpinnerModule
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
@@ -35,6 +37,7 @@ export class Home {
   books: Book[] = [];
   selectedBook: Book | undefined = undefined;
   zoom = 0.4;
+  loadingPdf = false;
 
   searchText = '';
   categoryFilter = 'all';
@@ -72,13 +75,15 @@ export class Home {
     });
   }
 
-  openReader(book: Book) {
-    this.selectedBook = book;
-  }
+ openReader(book: Book) {
+  this.selectedBook = book;
+  this.loadingPdf = true;
+}
 
-  closeReader() {
-    this.selectedBook = undefined;
-  }
+closeReader() {
+  this.selectedBook = undefined;
+  this.loadingPdf = false;
+}
 
   filterCategory(category: string) {
     this.categoryFilter = category;
