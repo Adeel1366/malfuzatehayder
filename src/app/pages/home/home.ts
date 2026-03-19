@@ -43,6 +43,8 @@ export class Home {
 
   searchText = '';
   categoryFilter = 'all';
+  gestureHandler: any;
+touchHandler: any;
 
   constructor(private bookService: BookService) {}
 
@@ -78,11 +80,13 @@ zoomOut() {
  openReader(book: Book) {
   this.selectedBook = book;
   this.loadingPdf = true;
+   this.enableTouchBlock();
 }
 
 closeReader() {
   this.selectedBook = undefined;
   this.loadingPdf = false;
+  this.disableTouchBlock();
 }
 
   filterCategory(category: string) {
@@ -97,5 +101,38 @@ closeReader() {
   onPageChange(event:any){
     this.pageIndex = event.pageIndex;
   }
+
+  enableTouchBlock() {
+
+  // iOS pinch zoom
+  this.gestureHandler = (e: any) => e.preventDefault();
+
+  document.addEventListener('gesturestart', this.gestureHandler);
+  document.addEventListener('gesturechange', this.gestureHandler);
+  document.addEventListener('gestureend', this.gestureHandler);
+
+  // double tap zoom
+  let lastTouchEnd = 0;
+
+  this.touchHandler = (event: any) => {
+    const now = new Date().getTime();
+
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+
+    lastTouchEnd = now;
+  };
+
+  document.addEventListener('touchend', this.touchHandler, false);
+}
+
+disableTouchBlock() {
+  document.removeEventListener('gesturestart', this.gestureHandler);
+  document.removeEventListener('gesturechange', this.gestureHandler);
+  document.removeEventListener('gestureend', this.gestureHandler);
+
+  document.removeEventListener('touchend', this.touchHandler);
+}
 
 }
